@@ -1,0 +1,50 @@
+{
+  "name": "exam_project",
+  "version": "1.0.0",
+  "description": "Final project for NodeJS classes at KEA. Spring 2020",
+  "main": "app.js",
+  "scripts": {
+    "migrate:latest": "knex migrate:latest",
+    "migrate:make": "knex migrate:make",
+    "migrate:rollback": "knex migrate:rollback",
+    "seed:make": "knex seed:make",
+    "seed:run": "knex seed:run",
+    "cleandb": "knex migrate:rollback & knex migrate:latest & knex seed:run",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wilkuukliw/Kea_DAT_Node_2020_Spring/tree/master/Exam_Project"
+  },
+  "keywords": [
+    "express",
+    "mysql",
+    "css",
+    "javascript",
+    "orm",
+    "objection",
+    "knex",
+    "sockets",
+    "aws"
+  ],
+  "author": "Anna Maria Wilczek",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^4.0.1",
+    "escape-html": "^1.0.3",
+    "express": "^4.17.1",
+    "express-session": "^1.17.1",
+    "helmet": "^3.22.0",
+    "knex": "^0.21.1",
+    "multer": "^1.4.2",
+    "mysql": "^2.18.1",
+    "mysql2": "^2.1.0",
+    "nodemailer": "^6.4.6",
+    "nodemon": "^2.0.4",
+    "objection": "^2.1.3",
+    "path": "^0.12.7",
+    "socket.io": "^2.3.0",
+    "sqlite3": "^4.2.0",
+    "sweetalert2": "^9.13.1"
+  }
+}

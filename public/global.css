@@ -1,0 +1,232 @@
+#copyright-paragraph {
+    font-size: 0.8em;
+}
+
+ul {
+    margin: 0 auto;
+    list-style: none;
+}
+
+nav ul {
+    list-style: none;
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+    line-height: 55px;
+    margin-bottom: 100px;
+}
+  
+nav ul li, .image-gal ul li {
+    display: inline-block;
+    padding: 0 10px;
+}
+
+.gal-item {
+	height: 500x;
+	margin: 25px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+a, h1 {
+    font-family: 'Thasadith', sans-serif;
+    font-weight: 700; 
+    color: #000000 !important; 
+    text-transform: uppercase; 
+    letter-spacing: 2px; 
+    text-decoration: none;
+    display: block;
+    padding: 0.5rem 1rem;
+    padding-left: 0.5rem;
+}
+
+
+body {
+    background-image: linear-gradient(to top, #fddb92 0%, #d1fdff 100%);
+    background-repeat: no-repeat;
+    font-family: 'Thasadith', sans-serif;
+    font-size: 1.1rem;
+    opacity:0.8;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    text-align: -webkit-center;
+}
+
+
+.logo .logo-1, .logo .logo-2, .logo .logo-3, .logo .logo-4 {
+    width: 140px 
+}
+
+.logo-4 {
+    margin-left: 15px;
+}
+
+
+button {
+    background-color: #D1D693;
+    padding: 10px 10px;
+    margin: 16px 0;
+    border: none;
+    cursor: pointer;
+    width: 15%;
+    position: center;
+    font-family: 'Thasadith', sans-serif;
+    font-size: 1em;
+}
+  
+/* Add a hover effect for button */
+
+button:hover {
+    opacity: 0.8;
+}
+
+.container {
+	margin-top: 80px;
+    display: flex;
+}
+
+
+section.right, section.left {
+	display: inline-block;
+	width: 50%;
+	position: relative;
+	margin-bottom: 80px;
+}
+
+section.right p {
+	width: calc(100% - 100px);
+	margin-right: 50px;
+    line-height: 155%;
+    text-align: left;
+    font-size: 2rem;
+}
+
+.img-container {
+	width: calc(100% - 100px);
+	height: 500x;
+	margin: 0 auto;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.img-container img {
+	width: 75%;
+}
+
+form {
+    display: block;
+}
+
+.form-title, .form-description {
+    margin: 25px 25px;
+    padding-top: 10px; 
+    padding-bottom: 10px;
+    text-align: left;
+    border: 0;
+    border-radius: 0;
+    outline: 0;
+    border-bottom: 2px solid #E2E2E2;
+    padding-right: 150px;
+    font-family: 'Thasadith', sans-serif;
+    width: 45%;
+    display: block;
+}
+
+label {
+    cursor: pointer;
+    -webkit-appearance: none;
+    background: linear-gradient(to top, #FFF, #DDD);
+    border: none;
+    border-radius: .25em;
+    box-shadow: inset .25em .25em .25em rgba(255,255,255, .5), inset -.1em -.1em .1em rgba(0,0,0, 0.1);
+    padding: .65em;
+    margin-right: 10px;
+    width: 0%;
+}
+
+label:hover {
+    opacity: 0.7;
+}
+
+#upload-photo {
+    opacity: 0;
+    position: absolute;
+    z-index: -1;
+    visibility: hidden;
+}
+
+.floating-btn-chat {
+    background-color: #14d1cb;
+    width: 100px;
+    height: 100px;
+    z-index: 10;
+    position: fixed;
+    bottom: 50px;
+    right: 50px;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 20px;
+    line-height: 100px;
+    color: #fff;
+    border-radius: 100%;
+    animation-name: buttonAnimation;
+    animation-duration: 3s;
+    animation-delay: 3s;
+    animation-iteration-count: infinite;
+    transform-origin: center;
+}
+
+.floating-btn-chat:hover {
+  background-color: pink;
+}
+
+footer {
+    margin-bottom: 200px;
+    height: 200px;
+    width: 100%;
+    position: relative;
+}
+
+.form-group {
+    margin: 15px 5px;
+    padding-top: 30px; 
+ }
+ 
+ .contact-form .form-control {
+     outline: 0;
+     padding-right: 150px;
+     font-family: 'Thasadith', sans-serif;
+     width: 100%;
+ }
+
+ /* Signup and login form */
+
+input[type=text], input[type=password] {
+    width: 50%;
+    padding: 12px 20px;
+    margin: 25px 0;
+    display: block;
+}
+
+.account-container {
+    width: 50%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.account-container label {
+    visibility: hidden;
+
+}
+  
+
+@keyframes buttonAnimation {
+    100% {
+        background-color: lightpink;
+    }
+}

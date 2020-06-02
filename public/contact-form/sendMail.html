@@ -1,0 +1,22 @@
+
+     <form action="/sendMail" method="POST">
+        <div class="form-group">
+        
+                <textarea name="text" class="form-control" id="message" placeholder="write here.. no sign limit and you can stretch the view! ->" rows="5" required></textarea>
+        </div>
+        <div class="form-group">
+            <button id="btnAlert" type="submit" class="button">send</button>
+        </div>
+      </form>
+
+<script>
+
+        $('#btnAlert').click(function() {
+          Swal.fire({
+            title: 'Success!',
+            text: 'Message has been sent',
+            icon: 'success',
+            confirmButtonText: 'OK'
+          })
+});
+</script>
