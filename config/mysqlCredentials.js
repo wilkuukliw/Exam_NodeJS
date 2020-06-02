@@ -3,7 +3,7 @@ module.exports = {
     user: 'root',
     password: 'password',
     sessionSecret: 'some session secret',
-    host: "localhost",
+    host: "http://ec2-35-153-78-103.compute-1.amazonaws.com:5002",
     //operatorsAliases: false,
 
     dialect: "mysql",
