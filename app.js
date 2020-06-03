@@ -1,6 +1,7 @@
 const express = require("express"); //web app framework    
 const app = express();
 const server = require('http').createServer(app);
+const credentials = require("./config/mysqlCredentials");
 
 const io = require('socket.io')(server);
 
@@ -115,3 +116,25 @@ server.listen(PORT, (error) => {
     }
     console.log("Server is running remotely on port ", PORT, "please visit http://ec2-35-153-78-103.compute-1.amazonaws.com:5002/")
 });
+
+
+var mysql = require('mysql');
+
+var connection = mysql.createConnection({
+    host: credentials.host,
+    database: credentials.database,
+    user:     credentials.user,
+    password: credentials.password,
+    port: credentials.port,
+});
+
+connection.connect(function(err) {
+  if (err) {
+    console.error('Database connection failed: ' + err.stack);
+    return;
+  }
+
+  console.log('Connected to database.');
+});
+
+connection.end();
