@@ -1,9 +1,9 @@
 module.exports = {
-    database: 'exam_db',
-    user: 'root',
+    database: 'examdb',
+    user: 'admin',
     password: 'password',
     sessionSecret: 'some session secret',
-    host: "http://ec2-35-153-78-103.compute-1.amazonaws.com:5002",
+    host: "examdb.cab7koaw8w48.us-east-1.rds.amazonaws.com",
     //operatorsAliases: false,
 
     dialect: "mysql",
