@@ -29,6 +29,13 @@ nav ul li, .image-gal ul li {
 	align-items: center;
 }
 
+.weather-header {
+    letter-spacing: 2px;
+    padding: 0.5rem 1rem;
+    font-weight: bolder;
+
+}
+
 a, h1 {
     font-family: 'Thasadith', sans-serif;
     font-weight: 700; 
@@ -180,7 +187,7 @@ label:hover {
 }
 
 .floating-btn-chat:hover {
-  background-color: pink;
+   background-color: pink;
 }
 
 footer {
