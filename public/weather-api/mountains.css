@@ -1,0 +1,64 @@
+
+.sun {
+    animation-name: movingSun, disappear;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+    transform-origin: bottom;
+    transform-box: fill-box;
+}
+
+.line1, .line3 {
+    animation-name: mountains-line-right;
+    animation-duration: 4s;
+    animation-delay: 1s;
+    animation-iteration-count: infinite;
+    transform-origin: bottom;
+    transform-box: fill-box;
+}
+
+.line2, .line4 {
+    animation-name: mountains-line-left;
+    animation-duration: 4s;
+    animation-delay: 1s;
+    animation-iteration-count: infinite;
+    transform-origin: bottom;
+    transform-box: fill-box;
+}
+
+#Layer_1{
+    width: 1100px;
+
+}
+
+@keyframes movingSun {
+    100% {
+        transform: translateY(7px) translateX(250px) scale(1.2); 
+    }
+
+    75% {
+        transform: translateX(220px) scale(0.5);
+    }
+
+    0% { 
+        transform: translateY(50px) translateY(50px);
+    }
+}
+
+@keyframes disappear {
+    0% {
+        opacity: 0;
+    }
+
+}
+
+@keyframes mountains-line-right {
+    100% {
+        transform: rotate(-20deg)
+    }
+}
+
+@keyframes mountains-line-left {
+    100% {
+        transform: rotate(15deg)
+    }
+}
