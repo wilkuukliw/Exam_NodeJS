@@ -105,9 +105,9 @@ io.on('connection', socket => {
     console.log("Socket joined", socket.id);
 
 
-   socket.on("I'm thinking about this", ({ talk }) => {
+   socket.on("Hi!", ({ talk }) => {
        // sends out to all the clients
-         io.emit("Someone said", { talk });
+         io.emit("User said", { talk });
 
         }); 
 
