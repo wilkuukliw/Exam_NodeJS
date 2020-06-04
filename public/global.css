@@ -48,7 +48,6 @@ a, h1 {
     padding-left: 0.5rem;
 }
 
-
 body {
     background-image: linear-gradient(to top, #fddb92 0%, #d1fdff 100%);
     background-repeat: no-repeat;
@@ -69,7 +68,6 @@ body {
 .logo-4 {
     margin-left: 15px;
 }
-
 
 button {
     background-color: #D1D693;
@@ -93,7 +91,6 @@ button:hover {
 	margin-top: 80px;
     display: flex;
 }
-
 
 section.right, section.left {
 	display: inline-block;
@@ -166,18 +163,14 @@ label:hover {
 }
 
 .floating-btn-chat {
-    background-color: #14d1cb;
+    background-color: #AFC7D0;
     width: 100px;
-    height: 100px;
-    z-index: 10;
     position: fixed;
     bottom: 50px;
     right: 50px;
-    text-align: center;
     vertical-align: middle;
     font-size: 20px;
     line-height: 100px;
-    color: #fff;
     border-radius: 100%;
     animation-name: buttonAnimation;
     animation-duration: 3s;

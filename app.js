@@ -2,51 +2,24 @@ const express = require("express"); //web app framework
 const app = express();
 const server = require('http').createServer(app);
 const credentials = require("./config/mysqlCredentials");
-
 const io = require('socket.io')(server);
-
-const escape = require('escape-html');
 const helmet = require('helmet');
-app.use(helmet());
+const session = require('express-session');  //keep track of users logged in and authorisation
+const fs = require('fs');
 
 global.__basedir = __dirname;
-
-io.on('connection', socket => { 
-    // console.log("Socket joined", socket.id);
-    
-
-    socket.on("I'm thinking about this", ({ thoughts }) => {
-        // sends out to all the clients
-        io.emit("Someone said", { thoughts: escape(thoughts) });
-
-        // sends back to the very same client
-        //socket.emit("Someone said", { thoughts });
-
-        // sends to all clients but the client itself
-        // socket.broadcast.emit("Someone said", { thoughts });
-
-
-    });
-
-/*     socket.on('disconnect', () => {
-        console.log("Socket left", socket.id);
-    }); */
-});
 
 app.use(express.json());
 app.use(express.static('.'));  //configure express to integrate stylesheets into the app
 app.use('/uploads', express.static('uploads'));
 app.use(express.urlencoded({extended: false}));
-
-const session = require('express-session');  //keep track of users logged in and authorisation
+app.use(helmet());
 
 app.use(session({
     secret: require('./config/mysqlCredentials.js').sessionSecret,  //  used to determine if the user is logged-in
     resave: false,   //save to seession store?
     saveUninitialized: true
 }));
-
-const fs = require('fs');
 
 const navbarPage = fs.readFileSync("public/navbar/navbar.html", "utf8");
 const indexPage = fs.readFileSync("public/index/index.html", "utf8");
@@ -93,14 +66,15 @@ app.get("/weather", (req,res) => {
     return res.send(weatherPage);
 });
 
-
 const authRoute = require('./routes/auth.js');
 const uploadRoute = require('./routes/upload.js');
 const contactRoute = require('./routes/contact.js');
+const usersRoute = require('./routes/users.js');
 
 app.use(authRoute); 
 app.use(uploadRoute);
 app.use(contactRoute);
+app.use(usersRoute); 
 
 // objection + knex
 
@@ -112,6 +86,19 @@ const knex = Knex(knexFile.development); // connection from knexfile
 
 Model.knex(knex); // objects now aware of the connection. built in method. 
 
+io.on('connection', socket => { 
+    console.log("Socket joined", socket.id);
+   
+   socket.on("I'm thinking about this", ({ thoughts }) => {
+       // sends out to all the clients
+       io.emit("Someone said", { thoughts: escape(thoughts) });
+
+   });
+
+    socket.on('disconnect', () => {
+       console.log("Socket left", socket.id);
+   }); 
+});
 
 const PORT = 5002;
 
@@ -121,7 +108,6 @@ server.listen(PORT, (error) => {
     }
     console.log("Server is running remotely on port ", PORT, "please visit http://ec2-35-153-78-103.compute-1.amazonaws.com:5002/")
 });
-
 
 var mysql = require('mysql');
 

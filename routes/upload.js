@@ -1,5 +1,4 @@
 const router = require("express").Router();
-//const fs = require("fs");
 const Image = require('../models/Image.js');
 const multer = require("multer");
 
@@ -29,7 +28,7 @@ router.post("/upload", upload.single('image'), (req, res) => {
     Image.query().insert({
       title: req.file.originalname,
       
-     }).then((image) => {
+     }).then(() => {
       console.log(req.file);
       return res.send({ response: "Image has been added to the gallery" });
     });
