@@ -5,7 +5,6 @@ const credentials = require("./config/mysqlCredentials");
 const io = require('socket.io')(server);
 const helmet = require('helmet');
 const session = require('express-session');  //keep track of users logged in and authorisation
-const fs = require('fs');
 
 global.__basedir = __dirname;
 
@@ -20,6 +19,8 @@ app.use(session({
     resave: false,   //save to seession store?
     saveUninitialized: true
 }));
+
+const fs = require('fs');
 
 const navbarPage = fs.readFileSync("public/navbar/navbar.html", "utf8");
 const indexPage = fs.readFileSync("public/index/index.html", "utf8");
@@ -66,6 +67,7 @@ app.get("/weather", (req,res) => {
     return res.send(weatherPage);
 });
 
+
 const authRoute = require('./routes/auth.js');
 const uploadRoute = require('./routes/upload.js');
 const contactRoute = require('./routes/contact.js');
@@ -74,7 +76,8 @@ const usersRoute = require('./routes/users.js');
 app.use(authRoute); 
 app.use(uploadRoute);
 app.use(contactRoute);
-app.use(usersRoute); 
+app.use(usersRoute);   // REST for the user model
+
 
 // objection + knex
 
@@ -86,19 +89,6 @@ const knex = Knex(knexFile.development); // connection from knexfile
 
 Model.knex(knex); // objects now aware of the connection. built in method. 
 
-io.on('connection', socket => { 
-    console.log("Socket joined", socket.id);
-   
-   socket.on("I'm thinking about this", ({ thoughts }) => {
-       // sends out to all the clients
-       io.emit("Someone said", { thoughts: escape(thoughts) });
-
-   });
-
-    socket.on('disconnect', () => {
-       console.log("Socket left", socket.id);
-   }); 
-});
 
 const PORT = 5002;
 
@@ -107,6 +97,23 @@ server.listen(PORT, (error) => {
         console.log(error);
     }
     console.log("Server is running remotely on port ", PORT, "please visit http://ec2-35-153-78-103.compute-1.amazonaws.com:5002/")
+});
+
+// socket
+
+io.on('connection', socket => { 
+    console.log("Socket joined", socket.id);
+
+
+   socket.on("I'm thinking about this", ({ talk }) => {
+       // sends out to all the clients
+         io.emit("Someone said", { talk });
+
+        }); 
+
+         socket.on('disconnect', () => {
+         console.log("Socket left", socket.id);
+    });
 });
 
 var mysql = require('mysql');
