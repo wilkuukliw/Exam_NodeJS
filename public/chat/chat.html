@@ -1,33 +1,32 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chat</title>
-
+    
     <link rel="stylesheet" type="text/css" href="public/global.css">
     <link href="https://fonts.googleapis.com/css2?family=Faster+One&family=Thasadith&display=swap" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.slim.js" integrity="sha256-Dul4c09cdrWKXVtallPxF558lwxMwCC8dXJdZ0PVW54=" crossorigin="anonymous"></script>
+    <script src="http://ec2-35-153-78-103.compute-1.amazonaws.com:5002//socket.io/socket.io.js" type="text/javascript"></script>
 </head>
 <body>
     <a>Ask us a question</a>
-    <input id="thoughts" placeholder="write something ;>" />
-    <button onclick="onThoughtsSubmitted()">Post</button>
+    <input id="talk" placeholder="write something ;>" />
+    <button onclick="onTalkSubmitted()">Post</button>
 
     <div id="messages"></div>
     <script>
-        const socket = io.connect("localhost:5002");
+        const socket = io.connect("http://ec2-35-153-78-103.compute-1.amazonaws.com:5002");
 
-        function onThoughtsSubmitted() {
-            const thoughts = $('#thoughts').val();
-            $('#thoughts').val("");
-            socket.emit("I'm thinking about this", { thoughts });
+        function onTalkSubmitted() {
+            const talk = $('#talk').val();
+            $('#talk').val("");
+            socket.emit( { talk } );
         }
 
-        socket.on("Someone said", data => {
-            $('#messages').prepend(`<div>${data.thoughts}</div>`);
+        socket.on(data => {
+            $('#messages').prepend(`<div>${data.talk}</div>`);
         });
 
     </script>

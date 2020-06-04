@@ -7,8 +7,6 @@ const saltRounds = 12;
 //We need to now handle the POST request, basically what happens here is when the client enters their details in the login form and clicks the submit button, 
 //the form data will be sent to the server, and with that data our login script will check in our database's accounts table to see if the details are correct.
 
-
-
 router.get('/login', (req, res) => {
     return res.sendFile(path.join(__dirname, '../public/account/login.html'));
 });
@@ -76,7 +74,6 @@ router.post("/signup", async (req, res) => {   // async (promise)
             } catch (error) {
                 return res.status(500).send({ response: "Something went wrong with the database" });
             }
-
         }
 
     //If no results are returned we send to the client an error message, this message will let the client know they've entered the wrong details.
@@ -85,8 +82,7 @@ router.post("/signup", async (req, res) => {   // async (promise)
         return res.status(400).send({ response: "Passwords do not match. Fields: password and passwordRepeat" });
     } else {
         return res.status(404).send({ response: "Missing fields: username, password, passwordRepeat" });
-    }
-    
+    }  
 });
 
 router.get("/logout", (req, res) => {   
