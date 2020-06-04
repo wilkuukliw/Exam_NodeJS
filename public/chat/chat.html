@@ -22,10 +22,10 @@
         function onTalkSubmitted() {
             const talk = $('#talk').val();
             $('#talk').val("");
-            socket.emit( { talk } );
+            socket.emit("Hi!", { talk } );
         }
 
-        socket.on(data => {
+        socket.on("User said", data => {
             $('#messages').prepend(`<div>${data.talk}</div>`);
         });
 
